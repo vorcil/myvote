@@ -20,7 +20,7 @@ function initialise(){
     var svg= body.append("svg")
 	.attr("width", width)
 	.attr("height", height);
-	
+    
     /*svg workspace*/
     var workspace = svg.append("svg")
 	.attr("x", 0)
@@ -50,20 +50,38 @@ function initialise(){
 
 
 
-    function drawVote(){
-	workspace.selectAll("*").remove();
-	d3.selectAll('.navbutton').remove();
-	d3.selectAll('.loginText').remove();
-	d3.selectAll('.aboutText').remove();
-	signName(username);
-	//server passes in city information;
 
-	drawVoteNav();
-	
+
+
+
+
+
+
+
+
+
+
+
+
+    function loadVote(){
+	workspace.selectAll("*").remove();
+
+
+	var mainwindow = workspace.append("rect")
+	    .transition()
+	    .attr("width", (width/2))
+	    .attr("height", 500)
+	    .attr("x", -600)
+	    .attr("y", 50)
+	    .attr("rx", 10)
+	    .attr("fill", "#444")
+	    .transition()
+	    .attr("x", xpos);
     }
 
 
 
+    
 
 
 
@@ -127,48 +145,32 @@ function initialise(){
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
     function drawVoteNav(){
 	loadEnroll();
 	
 	var enroll = svg.append("rect")
-    	.attr("x", xpos)
-	.attr("y", 0)
-	.attr("class", "navbutton")
-	.attr("width", 200)
-	.attr("height", 40)
-	.attr("rx", 10)
-	.attr("ry", 10)
-	.attr("fill", "#444")
-	.attr("selected", "true")
-    	.on("mouseover", function(d) {mouseoverChange(d3.select(this))})
-	.on("mouseout", function(d) {mouseoutChange(d3.select(this))})
-	.on("click", function(d) {
-	    if(d3.select(this).attr("selected")=="false"){
-		d3.selectAll(".navbutton").attr("fill", "#FFB84D");
-		d3.select(this).attr("fill", "#444");
-		d3.selectAll("rect").attr("selected", "false");
-		d3.select(this).attr("selected", "true");
-		d3.selectAll("text").attr("fill", "#444");
-		d3.selectAll(".enrollText").attr("fill", "#CCC");
-		loadEnroll();
-	    }
-	});
+    	    .attr("x", xpos)
+	    .attr("y", 0)
+	    .attr("class", "navbutton")
+	    .attr("width", 200)
+	    .attr("height", 40)
+	    .attr("rx", 10)
+	    .attr("ry", 10)
+	    .attr("fill", "#444")
+	    .attr("selected", "true")
+    	    .on("mouseover", function(d) {mouseoverChange(d3.select(this))})
+	    .on("mouseout", function(d) {mouseoutChange(d3.select(this))})
+	    .on("click", function(d) {
+		if(d3.select(this).attr("selected")=="false"){
+		    d3.selectAll(".navbutton").attr("fill", "#FFB84D");
+		    d3.select(this).attr("fill", "#444");
+		    d3.selectAll("rect").attr("selected", "false");
+		    d3.select(this).attr("selected", "true");
+		    d3.selectAll("text").attr("fill", "#444");
+		    d3.selectAll(".enrollText").attr("fill", "#CCC");
+		    loadEnroll();
+		}
+	    });
 
 	var vote = svg.append("rect")
     	    .attr("x", xpos+200)
@@ -191,6 +193,7 @@ function initialise(){
 		    d3.selectAll("text").attr("fill", "#444");
 		    d3.selectAll(".votingText").attr("fill", "#CCC");
 		    loadVote();
+		 
 		    
 		}
 	    });
@@ -247,8 +250,6 @@ function initialise(){
 
 	
     }
-
-
     
     function signName(name){
 	svg.append("text")
@@ -260,7 +261,35 @@ function initialise(){
     
 
 
+    function drawVote(){
+	workspace.selectAll("*").remove();
+	d3.selectAll('.navbutton').remove();
+	d3.selectAll('.loginText').remove();
+	d3.selectAll('.aboutText').remove();
+	signName(username);
+	//server passes in city information;
 
+	drawVoteNav();
+	
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
@@ -336,8 +365,8 @@ function initialise(){
 		console.log("username: " + username);
 		console.log("password: " + password);
 		/*Send off to server - retrieve "loggedIn" 
-		 if true update to Draw vote
-		 if false update login note*/
+		  if true update to Draw vote
+		  if false update login note*/
 
 		if(username==usernamecheck && password==passwordcheck){
 		    drawVote();
@@ -359,7 +388,7 @@ function initialise(){
     
     function loadAbout(){
 	workspace.selectAll("*").remove();
-		
+	
 	var mainwindow = workspace.append("rect")
 	    .transition()
 	    .attr("width", 400)
@@ -391,66 +420,66 @@ function initialise(){
     
     function navLoad(){
 
-    var login = svg.append("rect")
-	.attr("x", xpos)
-	.attr("y", 0)
-	.attr("class", "navbutton")
-	.attr("width", 200)
-	.attr("height", 40)
-    	.attr("rx", 10)
-	.attr("ry", 10)
-	.attr("fill", "#444")
-	.attr("selected", "true")
-    	.on("mouseover", function(d) {mouseoverChange(d3.select(this))})
-	.on("mouseout", function(d) {mouseoutChange(d3.select(this))})
-	.on("click", function(d) {
-	    location.href="index.html";
-	});
+	var login = svg.append("rect")
+	    .attr("x", xpos)
+	    .attr("y", 0)
+	    .attr("class", "navbutton")
+	    .attr("width", 200)
+	    .attr("height", 40)
+    	    .attr("rx", 10)
+	    .attr("ry", 10)
+	    .attr("fill", "#444")
+	    .attr("selected", "true")
+    	    .on("mouseover", function(d) {mouseoverChange(d3.select(this))})
+	    .on("mouseout", function(d) {mouseoutChange(d3.select(this))})
+	    .on("click", function(d) {
+		location.href="index.html";
+	    });
 	
-    var about = svg.append("rect")
-    	.attr("x", xpos+200)
-	.attr("y", 0)
-	.attr("class", "navbutton")
-	.attr("width", 200)
-	.attr("height", 40)
-	.attr("rx", 10)
-	.attr("ry", 10)
-	.attr("fill", "#FFB84D")
-	.attr("selected", "false")
-    	.on("mouseover", function(d) {mouseoverChange(d3.select(this))})
-	.on("mouseout", function(d) {mouseoutChange(d3.select(this))})
-	.on("click", function(d) {
-	    if(d3.select(this).attr("selected")=="false"){
-		d3.selectAll(".navbutton").attr("fill", "#FFB84D");
-		d3.select(this).attr("fill", "#444");
-		d3.selectAll("rect").attr("selected", "false");
-		d3.select(this).attr("selected", "true");
-		d3.selectAll("text").attr("fill", "#444");
-		d3.selectAll(".aboutText").attr("fill", "#CCC");
-		loadAbout();
-	    }
-	});
+	var about = svg.append("rect")
+    	    .attr("x", xpos+200)
+	    .attr("y", 0)
+	    .attr("class", "navbutton")
+	    .attr("width", 200)
+	    .attr("height", 40)
+	    .attr("rx", 10)
+	    .attr("ry", 10)
+	    .attr("fill", "#FFB84D")
+	    .attr("selected", "false")
+    	    .on("mouseover", function(d) {mouseoverChange(d3.select(this))})
+	    .on("mouseout", function(d) {mouseoutChange(d3.select(this))})
+	    .on("click", function(d) {
+		if(d3.select(this).attr("selected")=="false"){
+		    d3.selectAll(".navbutton").attr("fill", "#FFB84D");
+		    d3.select(this).attr("fill", "#444");
+		    d3.selectAll("rect").attr("selected", "false");
+		    d3.select(this).attr("selected", "true");
+		    d3.selectAll("text").attr("fill", "#444");
+		    d3.selectAll(".aboutText").attr("fill", "#CCC");
+		    loadAbout();
+		}
+	    });
 
-    var loginText = svg.append("text")
-	.transition()
-	.attr("x", xpos+50)
-	.attr("y", 25)
-	.attr("class", "loginText")
-	.attr("font-size", 25)
-	.attr("fill", "#CCC")
-	.text("Login");
+	var loginText = svg.append("text")
+	    .transition()
+	    .attr("x", xpos+50)
+	    .attr("y", 25)
+	    .attr("class", "loginText")
+	    .attr("font-size", 25)
+	    .attr("fill", "#CCC")
+	    .text("Login");
 
-    
-    var aboutText = svg.append("text")
-	.transition()
-	.attr("x", xpos+250)
-	.attr("y", 25)
-	.attr("class", "aboutText")
-	.attr("font-size", 25)
-	.attr("fill", "#444")
-	.text("About");
+	
+	var aboutText = svg.append("text")
+	    .transition()
+	    .attr("x", xpos+250)
+	    .attr("y", 25)
+	    .attr("class", "aboutText")
+	    .attr("font-size", 25)
+	    .attr("fill", "#444")
+	    .text("About");
 
-    
+	
     }
 
     
@@ -464,7 +493,7 @@ function initialise(){
     }
     function mouseoutChange(d){
 	if(d.attr("selected")=="true"){ 
-	d.transition().duration(500).attr("opacity", 1);
+	    d.transition().duration(500).attr("opacity", 1);
 	} else if(d.attr("selected")=="false"){
 	    d.transition().duration(500).attr("fill", "#FFB84D").attr("opacity", 1);
 	} else d.attr("opacity", 1);
