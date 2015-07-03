@@ -1,0 +1,34 @@
+{
+  
+   "resourceSets":[
+      {
+         "estimatedTotal":1,
+         "resources":[
+            {
+               "__type":"DataflowJob:http:\/\/schemas.microsoft.com\/search\/local\/ws\/rest\/v1",
+               "id":"8ccf2a5b428d423c92759150dcddc338",
+               "links":[
+                  {
+                     "role":"self",
+                     "url":"https:\/\/spatial.virtualearth.net\/REST\/v1\/dataflows\/DataSourceDownload\/MyDataSourceName"
+                  },
+                  {
+                     "role":"output",
+                     "output":"succeeded",
+                     "url":"https:\/\/spatial.virtualearth.net\/REST\/v1\/dataflows\/DataSourceDownload\/MyDataSourceName\/ouput\/succeeded"
+                  }
+
+               ],
+               "createdDate":"Thu, 17 Nov 2011 20:38:31 GMT",
+               "failedEntityCount":0,
+               "processedEntityCount":0,
+               "status":"Completed",
+               "totalEntityCount":300
+            }
+         ]
+      }
+   ],
+   "statusCode":201,
+   "statusDescription":"Created",
+   "traceId":"9bc6dede6e79468ba1cc3728aa7f1cb4"
+}

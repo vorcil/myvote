@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "TestMessageSend";
+}
+
+<h2>TestMessageSend</h2>
+
+
+
+
+<form id="messageForm">
+    <div class="form-group">
+        <label for="ToNumber">Number to send to</label>
+        <input type="text" class="form-control" id="ToNumber" placeholder="+64278483902">
+    </div>
+
+    <div class="form-group">
+        <label for="Text">Your message</label>
+        <textarea class="form-control" rows="3" id="Text"></textarea>
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<script>
+    $("form").on("submit", function (event) {
+        event.preventDefault();
+       
+        var message = new Object();
+        message.ToNumber = $('#ToNumber').val();
+        message.Text = $('#Text').val();
+
+        $.post("/api/SMS", message);
+        
+    });
+</script>
