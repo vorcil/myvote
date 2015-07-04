@@ -380,11 +380,13 @@ function initialise(){
                 url : "realme_api.php?login",
                 data : login_details,
                 dataType : 'jsonp',
+                method : 'POST',
                 success : function(response){
                     console.log("response",response);
                     if (response.success == true){
                         usersdata  = response.data;
                         console.log("usersdata",usersdata);
+                        //need to now create request to the myvote to pull person data into usersdata
                         //drawVote()
                     }
                     else{
