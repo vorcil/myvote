@@ -60,7 +60,7 @@ class realme_api {
      * checks user returns realme details
      */
     private function login(){
-        
+
         $username = $this->post['username'];
         $password = $this->post['password'];
         $sql = "SELECT * FROM myvote.realme WHERE username = '$username' AND password = '$password' LIMIT 1";
