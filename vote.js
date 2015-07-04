@@ -45,6 +45,10 @@ var text = workspace.append("text")
     .attr("x", 275).attr("y", 240)
     .attr("font-size", 25)
     .text("Password :");
+var text = workspace.append("text")
+    .attr("x", 275).attr("y", 440)
+    .attr("font-size", 25)
+    .text("Please enter your text-verified RealME login username and password.");
 
 var submit = workspace.append("image")
     .attr("x", 565)
