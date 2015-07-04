@@ -1,0 +1,24 @@
+/**
+ * Created by michael on 4/07/2015.
+ */
+
+var theData;
+$(document).ready(function(){
+    console.log("getting json")
+    $.getJSON("https://api.import.io/store/data/d70b40ac-de2f-41e7-a577-bf15c33c69af/_query?input/webpage/url=http%3A%2F%2Fwww.elections.org.nz%2Fparties-candidates%2Fregistered-political-parties%2Fregister-political-parties&_user=fcbcf36f-07a5-4cd2-ba54-e3b72785e18f&_apikey=fcbcf36f07a54cd2ba54e3b72785e18fa200bc5f5df63bbe45a68699fd147a7ad57a4306e3878da8b03d7aec453c5afe4eec41921af613e84e7768e273b418c030b7c55956f3d70a721e408725bdfeb1", function (data) {
+
+    theData = data.results;
+    $.each(data.results, function (index, key , value) {
+    if (key["party_name/_text"]){
+    value = key["party_name/_text"];
+
+    $('#dropDownList').append(
+    $('<option></option>').val(value).text(value)
+    );
+    }
+    });
+    });
+    })
+
+
+
