@@ -1,0 +1,46 @@
+<!-- footer -->
+    <section id="contact" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 left-footer">
+                    MyVote Logo
+                    <br/><br/>
+                    <a href="#">MyVote</a>
+                    <i class="fa fa-circle"></i>
+                    <a href="#">About</a>
+                    <i class="fa fa-circle"></i>
+                    <a href="#">Login</a>
+                    <p style="margin-top: 5px">MyVote &copy; 2015</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 middle-footer">
+                    <i class="fa fa-map-marker pull-left"></i>
+                    <p style="margin-top: 0px !important;">
+                        <span>21 Revolution Street</span>
+                        <br/>Wellington, New Zealand
+                    </p>
+                    <br/>
+                    <i class="fa fa-envelope pull-left"></i>
+                    <p>
+                        <span>myvote@mail.co.nz</span>
+                    </p>
+                    <br/>
+                    <i class="fa fa-phone pull-left"></i>
+                    <p>
+                        <span>0800 123 456</span>
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 right-footer">
+                    <h4>About</h4>
+                    <span>Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.</span>
+                    <br/><br/>
+                    <i class="fa fa-facebook"></i>
+                    &nbsp;
+                    <i class="fa fa-twitter"></i>
+                    &nbsp;
+                    <i class="fa fa-reddit"></i>
+                    &nbsp;
+                    <i class="fa fa-linkedin"></i>
+                </div>
+            </div>
+        </div>
+    </section>

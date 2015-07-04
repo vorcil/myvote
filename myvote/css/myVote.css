@@ -1,0 +1,115 @@
+/*==========================INDEX PAGE CSS=========================*/
+/*--- breaker ---*/
+.breaker{
+    padding: 0.6%;
+}
+/*--- footer ---*/
+.footer{
+    background-color: #FF5722;
+    padding: 3%;
+}
+.left-footer a{
+    font-size: 1.1em;
+    color: #ffffff;
+}
+.left-footer a:hover{
+    font-size: 1.1em;
+    color: #FFAB91
+    !important;
+    text-decoration: none !important;
+}
+.left-footer i{
+    font-size: 10px;
+}
+.middle-footer i{
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    vertical-align: middle;
+}
+.footer h4{
+    color: #ffffff;
+}
+.middle-footer p{
+    margin-top: 10px !important;
+}.right-footer i{
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #33383b;
+    font-size: 2em;
+    color: #ffffff;
+}
+.right-footer i:hover{
+     background-color: #FF7043 !important;
+    cursor: pointer !important;
+}
+/*==========================ABOUT PAGE CSS=========================*/
+.importantDatesSect{
+
+}
+/*==========================REGISTER PAGE CSS============================*/
+.registrationForm{
+    background: -webkit-linear-gradient(90deg, #616161 10%, #9bc5c3 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(90deg, #616161 10%, #9bc5c3 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(90deg, #616161 10%, #9bc5c3 90%); /* IE10 */
+    background:      -o-linear-gradient(90deg, #616161 10%, #9bc5c3 90%); /* Opera 11.10+ */
+    background:         linear-gradient(90deg, #616161 10%, #9bc5c3 90%); /* W3C */
+}
+.registerFormDesc{
+    text-align: center;
+    margin-top: 80px !important;
+    color: #ffffff;
+}
+.registerFormHead{
+    background: linear-gradient(#D84315, #FF5722, #FF7043);
+    text-align: center;
+    padding: 0px !important;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 100%;
+}
+.registerTitle{
+    border-right: 1px solid gray;
+    color: #ffffff;
+}
+.registerQuest i{
+    margin-top: 8px;
+    font-size: 2.5em;
+    width: 40px;
+    color: #D84315;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: #EEEEEE;
+
+    -webkit-box-shadow: -4px -2px 96px -19px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px -2px 96px -19px rgba(0,0,0,0.75);
+    box-shadow: -4px -2px 96px -19px rgba(0,0,0,0.75);
+}
+.registerFormBody{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.registerFormBody .input-group{
+    background-color: rgba(230, 230, 230, 0.1);
+}
+.registerFormBody button{
+    padding: 13px;
+    background-color: #337ab7;
+}
+.registerFormBody button:hover{
+    padding: 13px;
+    background-color: #D84315;
+}
+@media(max-width:1200px){
+    .registerFormBody{
+        margin-top: 1% !important;
+    }
+    .registerQuest{
+        display: none;
+    }
+}
