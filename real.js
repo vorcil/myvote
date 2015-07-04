@@ -127,7 +127,23 @@ var pobinput = workspace.append("foreignObject")
 				emailinput=document.getElementById('emailinput').value;
 				temp = [{"name":name,"dob":dobinput,"pob":pobinput, "gender":genderinput,"address":addressinput,"city":cityinput,"email":emailinput}]
 				//your php server load script here;
-				location.href="index.html";
+				//location.href="index.html";
+            console.log("temp",temp)
+            $.ajax({
+                url :"test.php",
+                dataType : 'jsonp',
+                data : temp,
+                type : 'POST',
+                success : function(response){
+                        console.log("response",response)
+                },
+                error: function(response){
+                        console.log("response",response)
+
+                }
+            })
+
+
 			});
 			
 		
