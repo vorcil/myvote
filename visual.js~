@@ -59,12 +59,7 @@ var submit = workspace.append("image")
     .on("mouseover", function(d){d3.select(this).attr("opacity", 0.7)})
     .on("mouseout", function(d) {d3.select(this).attr("opacity", 1)})
     .on("click", function(d) {
-	
-	console.log(document.getElementById('.password').value);
-	console.log(document.getElementById('.password').value);
-	//the variableas to be passed to the server
 
-	    
 	//send login data to database
 	//retrieve single user from database
 	//send user to visual.html
