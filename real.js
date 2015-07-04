@@ -125,9 +125,41 @@ var pobinput = workspace.append("foreignObject")
 				addressinput=document.getElementById('addressinput').value;
 				cityinput=document.getElementById('cityinput').value;
 				emailinput=document.getElementById('emailinput').value;
-				temp = [{"name":name,"dob":dobinput,"pob":pobinput, "gender":genderinput,"address":addressinput,"city":cityinput,"email":emailinput}]
+				temp = [
+                    {
+                        "name":name,
+                        "dob":dobinput,
+                        "pob":pobinput,
+                        "gender":genderinput,
+                        "address":addressinput,
+                        "phone" : phoneinput,
+                        "city":cityinput,
+                        "email":emailinput
+                    }]
 				//your php server load script here;
-				location.href="index.html";
+				//location.href="index.html";
+            //send the data to our fake realme api
+            console.log("temp",temp[0])
+
+            $.ajax({
+                url :"realme_api.php?create",
+                dataType : 'jsonp',
+                data : temp[0],
+                type : 'POST',
+                success : function(response){
+                        if (response.success == true)
+                            location.href="index.html";
+                    else
+                        alert("failed, please make sure all fields are entered")
+                        console.log("response",response)
+                },
+                error: function(response){
+                        console.log("response",response)
+
+                }
+            })
+
+
 			});
 			
 		
