@@ -8,6 +8,7 @@ function initialise(){
        //global reference for database
        jsonData=data; */
     /*Global variables */
+    usersdata = null;
     width=screen.width, height=screen.height, xpos=(width/8)-(width/7)+40;
     usernamecheck="1", passwordcheck="1";
     /*Local variables */
@@ -86,7 +87,9 @@ function initialise(){
 
 
     function loadEnroll(){
-	d3.json("check.json", function(data){
+        if (usersdata.length < 1) return false;
+
+	d3.json(usersdata, function(data){
 	    workspace.selectAll("*").remove();
 	    jsonCheck=data;
 
@@ -367,17 +370,42 @@ function initialise(){
 		/*Send off to server - retrieve "loggedIn" 
 		  if true update to Draw vote
 		  if false update login note*/
+            var login_details = {
+                'username' : username,
+                'password' : password
+            }
 
+
+            $.ajax({
+                url : "realme_api.php?login",
+                data : login_details,
+                dataType : 'jsonp',
+                method : 'POST',
+                success : function(response){
+                    console.log("response",response);
+                    if (response.success == true){
+                        usersdata  = response.data;
+                        console.log("usersdata",usersdata);
+                        //need to now create request to the myvote to pull person data into usersdata
+                        //drawVote()
+                    }
+                    else{
+
+                        var passFail = workspace.append("text")
+                            .attr("x", 50)
+                            .attr("y", 250)
+                            .attr("fill", "red")
+                            .text("Incorrect username or password");
+                    }
+                }
+            })
+       /*
 		if(username==usernamecheck && password==passwordcheck){
 		    drawVote();
 		} else if (password != passwordcheck){
-		    var passFail = workspace.append("text")
-			.attr("x", 50)
-			.attr("y", 250)
-			.attr("fill", "red")
-			.text("Incorrect username or password");
+
 		}
-		
+		*/
 	    });
 
 	
