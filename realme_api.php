@@ -56,8 +56,28 @@ class realme_api {
 
     }
 
+    /*
+     * checks user returns realme details
+     */
+    private function login(){
 
-    public function create(){
+        $username = $this->get['username'];
+        $password = $this->get['password'];
+        $sql = "SELECT * FROM myvote.realme WHERE username = '$username' AND password = '$password' LIMIT 1";
+        $results = $this->db()->query($sql);
+        if ($results){
+            $person = $results->fetch_assoc();
+            unset($person['password']);
+            $this->sendResponse($person);
+        }else{
+            $this->sendResponse("Failed incorrect details",false);
+        }
+
+    }
+    /*
+     * Creates a user
+     */
+    private function create(){
 
         $columns = implode(",",array_keys($this->post));
         //$escaped_values =  array_map(array($this, "mysqli->real_escape_string"), array_values($_POST));
@@ -123,7 +143,7 @@ class realme_api {
 }
 
 //actons to our api create
-$realMe = new realme_api(array("create"));
+$realMe = new realme_api(array("create","login"));
 $realMe->run();
 
 
