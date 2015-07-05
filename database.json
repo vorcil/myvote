@@ -4,5 +4,5 @@
     
     {"name": "Joel2", "password": "pw2", "city":"Wellington", "party":"null", "mp": "null", "address":"200 street", "enrolled":0},
     
-    {"name": "Joel3", "password": "pw3", "city":"Wellington", "party":"null", "mp": "null", "address":"300 street", "enrolled":0},
+    {"name": "Joel3", "password": "pw3", "city":"Wellington", "party":"null", "mp": "null", "address":"300 street", "enrolled":0}
 ]

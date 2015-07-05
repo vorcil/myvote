@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MyVote - Your online voting portal</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    <link rel="stylesheet" href="css/myVote.css" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--- navbar --->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">MyVote</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="login.html">Login</a>
+                    <!-- <li>
+                    <a class="page-scroll" href="#">MyEnrolement</a>
+                    </li> -->
+                </li>
+
+                <li>
+                    <a class="page-scroll" href="register.html">Enrol</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!---------------- realMe login form -------------------->
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 loginForm">
+    <div class="col-lg-8 col-lg-offset-3">
+        <div class="tabHead">
+            <i class="fa fa-lock pull-left"></i>
+            <h3><span>Log In</span></h3>
+            <hr class="styleHR" style="border-width: 2px; border-color: #D84315; max-width: 295px !important;"/>
+        </div>
+    </div>
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="loginFormInputSect">
+            <div class="col-lg-10 col-lg-offset-1 input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                <input type="text" class="form-control" id="username" placeholder="Username">
+            </div>
+            <br/>
+            <div class="col-lg-10 col-lg-offset-1 input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>Remember Me</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-10 col-lg-offset-1 input-group signInBtn">
+                <button id="login" class="btn btn-default">Log In</button>
+            </div>
+            <br/>
+            <div class="col-lg-10 col-lg-offset-1 input-group forgotPassBtn">
+                <button class="btn btn-default">Forgotten Password</button>
+            </div>
+            <div class="loginMessage">
+                <h4>Please enter your text-verified RealME login username and password.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------------------------- separation point --------------------------->
+<div style="font-size: 0.1px;">sdf</div>
+<!--- footer --->
+<footer>
+    <section id="contact" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 left-footer">
+                    <a href="index.html">
+                        <img src="img/logo-white.png" width="200">
+                    </a>
+                    <br/><br/>
+                    <ul class="list-unstyled">
+                        <li><a href="#">MyVote</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="sitemap.html">Site Map</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                    </ul>
+                    <p style="margin-top: 5px">MyVote &copy; 2015</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 middle-footer">
+                    <i class="fa fa-map-marker pull-left"></i>
+                    <p style="margin-top: 0px !important;">
+                        <span>21 Revolution Street</span>
+                        <br/>Wellington, New Zealand
+                    </p>
+                    <br/>
+                    <i class="fa fa-envelope pull-left"></i>
+                    <p>
+                        <span>myvote@mail.co.nz</span>
+                    </p>
+                    <br/>
+                    <i class="fa fa-phone pull-left"></i>
+                    <p>
+                        <span>0800 123 456</span>
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 right-footer">
+                    <h4>About</h4>
+                    <span>Our about message is still under construction.</span>
+                    <br/><br/>
+                    <i class="fa fa-facebook"></i>
+                    &nbsp;
+                    <i class="fa fa-twitter"></i>
+                    &nbsp;
+                    <i class="fa fa-reddit"></i>
+                    &nbsp;
+                    <i class="fa fa-linkedin"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+
+<!------------ scripts -------------->
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+<script src="js/wow.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/creative.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#login").click(function(){
+
+            var login_details  = {
+                username : $('#username').val(),
+                password : $('#password').val()
+            };
+            $.ajax({
+                url : "realme_api.php?login",
+                data : login_details,
+                dataType : 'jsonp',
+                method : 'POST',
+                success : function(response) {
+                    console.log("response", response);
+
+                    if (response.success == true)
+                    getPerson(response.data);
+                    else
+                    $(".loginMessage").text("Incorrect realMe login details").css('color','red')
+                }
+
+            });
+            //console.log("login_details",login_details)
+        })
+    })
+    function getPerson(response){
+        //now we send request to our mvote api
+        $.ajax({
+            url : "vote_api.php?getPerson",
+            data : response,
+            dataType : 'jsonp',
+            method : 'GET',
+            success : function(response) {
+
+
+                if (response.success == true){
+                    if (response.data.voted == 1){
+                        alert("You have already voted.");
+                        return;
+                    }
+                    else
+                    location.href = "vote.html";
+                }else
+                    $(".loginMessage").text("Incorrect realMe login details").css('color','red')
+                console.log("response", response);
+            }
+
+        });
+
+    }
+</script>
+<!---
+
+ var submit = workspace.append("image")
+    .attr("x", 565)
+    .attr("y", 265)
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("xlink:href", "bin/submit.png")
+    .on("mouseover", function(d){d3.select(this).attr("opacity", 0.7)})
+    .on("mouseout", function(d) {d3.select(this).attr("opacity", 1)})
+    .on("click", function(d) {
+
+	console.log(document.getElementById('.username').value);
+	console.log(document.getElementById('.password').value);
+	//the variables to be passed to the server
+
+
+	//send login data to database
+	//retrieve single user from database
+	//send user to visual.html
+	//make that single user data/json available on that page's javascript
+
+ --->
+
+</body>
+</html>

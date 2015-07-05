@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="flot/jquery.flot.pie.js"></script>
+
+<style>
+    .thepie {
+        width: 100%;
+        height: 400px;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+
+<div id="18-24-age" class="thepie"></div>
+
+<script>
+
+    $(document).ready(function(){
+        $.ajax({
+            url:"https://www.kimonolabs.com/api/b5nmvyou?apikey=5r7TtGrUF8TGl7P4zr4GAbtrrqwPcUFs",
+            crossDomain: true,
+            dataType: "jsonp",
+            success: function (response) {
+                console.log(response.results.collection1);
+
+                var theData = {};
+                $.map(response.results.collection1,function(item,index){
+                    /*
+                     {age: "40 - 44", eligible_population: "304,730", general_roll: "266,874", maori_roll: "25,213", total_enrolled: "292,087"…}age: "40 - 44"difference: "12,643"eligible_population: "304,730"general_roll: "266,874"index: 5maori_roll: "25,213"percent_enrolled: "95.85%"total_enrolled: "292,087"url: "http://www.elections.org.nz/research-statistics/enrolment-statistics-electorate"
+                     */
+                    theData[item.age] = item;
+
+                    //return false;
+                })
+
+
+                var firstagegroup = theData['18 - 24']
+                var totalenrolled = parseInt(firstagegroup.total_enrolled);
+                var difference = parseInt(firstagegroup.difference);
+                var eligible_population = parseInt(firstagegroup.eligible_population);
+                console.log("agegroup - 18 - 24","total enrolled",totalenrolled, "difference",difference,"eligible population", eligible_population )
+                /*
+                Morris.Bar({
+                    element: '18-24-age',
+                    data: [
+                        {label: "Eligible Population", value: eligible_population },
+                        {label: "Total Enrolled", value: totalenrolled},
+                        {label: "Difference", value: difference}
+                    ]
+                });*/
+
+                var data = [
+                	{ label: "Eligible Population",  data: eligible_population},
+                	{ label: "Total Enrolled",  data: totalenrolled},
+                    { label: "Difference",  data: difference}
+                            ];
+
+                /*
+                var data = {
+                    label: "Eligible Population", data: eligible_population ,
+                    label: "Total Enrolled", data: totalenrolled,
+                    label: "Difference", data: difference
+                }*/
+                $.plot($("#18-24-age"), data, {
+                    series: {
+                        pie: {
+                            show: true
+
+                        }
+                    },
+
+                    grid: {
+                        hoverable: true
+
+                    },
+                    tooltip: true,
+                        tooltipOpts: {
+                            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                            shifts: {
+                                x: 20,
+                                y: 0
+                            },
+                        defaultTheme: false
+                    }
+                });
+            },
+            error: function (xhr, status) {
+        //handle errors
+            }
+        });
+    })
+
+
+
+
+
+
+</script>
+</body>
+</html>

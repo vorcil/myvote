@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <script>
+       $(document).ready(function(){
+           var login_details = {
+               'username' : "Luk1014",
+               'password' : "luk021"
+           }
+
+
+           $.ajax({
+               url : "realme_api.php?login",
+               data : login_details,
+               dataType : 'jsonp',
+               method : 'POST',
+               success : function(response) {
+                   console.log("response", response);
+                   getPerson(response.data);
+               }
+
+            });
+       })
+
+
+        //returns person
+        function getPerson(response){
+            //now we send request to our mvote api
+            $.ajax({
+                url : "vote_api.php?getPerson",
+                data : response,
+                dataType : 'jsonp',
+                method : 'GET',
+                success : function(response) {
+                    console.log("response", response);
+                }
+
+            });
+
+        }
+    </script>
+<script>
+
+</script>
+</body>
+
+</html>
