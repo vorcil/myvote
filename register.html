@@ -87,59 +87,59 @@
                     <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Name">
+                    <input type="text" class="form-control" id="nameinput" placeholder="Name">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Date of Birth">
+                    <input type="text" class="form-control" id="dobinput" placeholder="Date of Birth">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-calendar-o"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Place of Birth">
+                    <input type="text" class="form-control" id="pobinput" placeholder="Place of Birth">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-venus-mars"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Gender">
+                    <input type="text" class="form-control" id="genderinput" placeholder="Gender">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-phone"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Phone">
+                    <input type="text" class="form-control" id="phoneinput" placeholder="Phone">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-building"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Address">
+                    <input type="text" class="form-control" id="addressinput" placeholder="Address">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-building-o"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" class="form-control" id="cityinput" placeholder="City">
                 </div>
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-envelope"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Email">
+                    <input type="text" class="form-control" id="emailinput" placeholder="Email">
                 </div>
                 <br/>
-                <button class="btn btn-info pull-right">Submit</button>
+                <button id="submit" class="btn btn-info pull-right">Submit</button>
             </div>
         </div>
     </div>
@@ -210,5 +210,54 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
+
+
+<script>
+    $('#submit').on("click", function(d) {
+        name = document.getElementById('nameinput').value;
+        dobinput = document.getElementById('dobinput').value;
+        pobinput = document.getElementById('pobinput').value;
+        genderinput = document.getElementById('genderinput').value;
+        phoneinput = document.getElementById('phoneinput').value;
+        addressinput = document.getElementById('addressinput').value;
+        cityinput = document.getElementById('cityinput').value;
+        emailinput = document.getElementById('emailinput').value;
+        temp = [
+            {
+                "name": name,
+                "dob": dobinput,
+                "pob": pobinput,
+                "gender": genderinput,
+                "address": addressinput,
+                "phone": phoneinput,
+                "city": cityinput,
+                "email": emailinput
+            }]
+        //your php server load script here;
+        //location.href="index.html";
+        //send the data to our fake realme api
+        console.log("temp", temp[0])
+
+        $.ajax({
+            url :"realme_api.php?create",
+            dataType : 'jsonp',
+            data : temp[0],
+            type : 'POST',
+            success : function(response){
+                if (response.success == true)
+                    location.href="login.html";
+                else
+                    alert("failed, please make sure all fields are entered")
+                console.log("response",response)
+            },
+            error: function(response){
+                console.log("response",response)
+
+            }
+        });
+    });
+</script>
+
+
 </body>
 </html>
