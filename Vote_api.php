@@ -9,7 +9,7 @@
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
-class Vote_api
+class vote_api
 {
     private $db_host = "localhost";
     private $db_username = "myvote";
@@ -18,94 +18,107 @@ class Vote_api
     private $allowed_calls = array();
     private $call = null;
     private $db_connect = null;
-    private $get = null;
-    private $post = null;
-
+    private $_get = null;
+    private $_post = null;
+    private $username = null;
+    private $voted = null;
     function __construct($calls = array())
     {
         //allowed calls to this db
         $this->allowed_calls = $calls;
+        if (session_id() == "")
+            session_start();
     }
 
     public function run()
     {
         //pass the rest of calls to get
-        $this->get = $_GET;
-        $this->post = $_POST;
+        $this->_get = $_GET;
+        $this->_post = $_POST;
+        $this->username = (isset($_SESSION['username'])) ? $_SESSION['username'] : null;
+        $this->voted = false;
         //first get request as action we need to get the key value
         if (!isset($_GET) || count($_GET) < 1)
-            $this->sendResponse("invalid call", false);
+            $this->sendResponse("invalid call" , false);
+
+
         //check the first key as this will be our action or call to script
+
         $this->call = $this->getCall();
         //[0];
         //check call to me
-        if (!in_array($this->call, $this->allowed_calls)) {
-            $this->sendResponse($this->call . " is a invalid action", false);
+        if (!in_array($this->call,$this->allowed_calls)){
+            $this->sendResponse($this->call." is a invalid action" , false);
         }
+
         //remove this action from get
-        unset($this->get[$this->call]);
+        unset($this->_get[$this->call]);
+        unset($this->_get['callback']);
+        unset($this->_get['_']);
+
         //we end here with valid call so lets return it
         $api_call = $this->call;
         if (method_exists($this, $api_call))
             return $this->$api_call();
         else
-            $this->sendResponse(" Failed to call " . $this->call, false);
+            $this->sendResponse(" Failed to call ".$this->call , false);
     }
 
 
     //create a new person
 
-private function create_person(){
+    private function create_person(){
 
-//This code has not been tested yet and is not complete!! I have tried to implement some basic integrity checks
+    //This code has not been tested yet and is not complete!! I have tried to implement some basic integrity checks
 
-//example data
-    /*$result = '{"id": "abc123", "name": "Jane", "address":"12 a street", "city":"Wellington", "dob": "31/5/1956", "pob":"Wellington",
- "email":"me@email.com","gender":"Female", "phone":"02152526", "enrolled": "1"}';
-    $person = json_decode($result, true);*/
-//for testing
+    //example data
+        /*$result = '{"id": "abc123", "name": "Jane", "address":"12 a street", "city":"Wellington", "dob": "31/5/1956", "pob":"Wellington",
+     "email":"me@email.com","gender":"Female", "phone":"02152526", "enrolled": "1"}';
+        $person = json_decode($result, true);*/
+    //for testing
 
-//print_r($person);
+    //print_r($person);
 
-//not working but its a check we should so
-    if($person['id'] === null){
-        $this->sendResponse ("The id is not there, something went wrong!",false);
+    //not working but its a check we should so
+        /*
+        if($person['id'] === null){
+            $this->sendResponse ("The id is not there, something went wrong!",false);
+
+        }
+    */
+    //query the database for the id that has been provided
+        $record_check = mysql_query("SELECT * FROM Person WHERE id = '".$person['name']."' ");
+        $check_result = mysql_num_rows($record_check);
+
+    //Check to see if the person exists
+
+    //if they dont insert the new record
+        if ($check_result === 0) {
+            mysql_query("INSERT INTO  `myvote`.`Person` (`id`,
+    `password`,
+    `name`,
+    `address`,
+    `city`,
+    `dob`,
+    `pob`,
+    `email`,
+    `gender`,
+    `phone`,
+    `enrolled`)
+      VALUES ('".$person['id']."', '".$person['name']."', '".$person['address']."', '".$person['city']."', '".$person['dob']."', '".$person['pob']."', '".$person['email']."'
+      , '".$person['gender']."', '".$person['phone']."', '".$person['enrolled']."')");
+
+            $this->sendResponse("Insert complete");
+        }
+
+    //if they do return an error
+        else {
+            //echo ("Someone already has that id! stop trying to rig votes!!");
+            $this->sendResponse ("Someone already has that id! stop trying to rig votes!!",false);
+        }
+
 
     }
-
-//query the database for the id that has been provided
-    $record_check = mysql_query("SELECT * FROM Person WHERE id = '".$person['name']."' ");
-    $check_result = mysql_num_rows($record_check);
-
-//Check to see if the person exists
-
-//if they dont insert the new record
-    if ($check_result === 0) {
-        mysql_query("INSERT INTO  `myvote`.`Person` (`id`,
-`password`,
-`name`,
-`address`,
-`city`,
-`dob`,
-`pob`,
-`email`,
-`gender`,
-`phone`,
-`enrolled`)
-  VALUES ('".$person['id']."', '".$person['name']."', '".$person['address']."', '".$person['city']."', '".$person['dob']."', '".$person['pob']."', '".$person['email']."'
-  , '".$person['gender']."', '".$person['phone']."', '".$person['enrolled']."')");
-
-        $this->sendResponse("Insert complete");
-    }
-
-//if they do return an error
-    else {
-        //echo ("Someone already has that id! stop trying to rig votes!!");
-        $this->sendResponse ("Someone already has that id! stop trying to rig votes!!",false);
-    }
-
-
-}
 
     //connect to the db
 private function db(){
@@ -116,60 +129,137 @@ private function db(){
 }
 
 
-private function record_vote(){
+    private function recordVote(){
+        /*
+         * Array
+        (
+            [party] =>
+            [mp] =>
+        )
+         */
+        $person = $this->getRecord($this->username);
 
+        if ($this->canVote()){
+            $party = $this->get("party");
+            $mp = $this->get("mp");
+            $this->voted = true;
+            $sql = "INSERT INTO `myvote`.`Vote` (`party`, `mp`) VALUES ('$party', '$mp');";
+            $this->db()->query($sql);
+            $username = $this->username;
+            //record as voted
+            $sql = "UPDATE `myvote`.`Person` SET `voted` = '1' WHERE `Person`.`username` = '$username';";
+            $result = $this->db()->query($sql);
 
-    $columns = implode(",",array_keys($this->post));
-    //$escaped_values =  array_map(array($this, "mysqli->real_escape_string"), array_values($_POST));
-    $values  = "'".implode("','", array_values($this->post))."'";
+            $this->sendResponse("Vote casted");
+        }
+        $this->sendResponse("failed to cast",false);
 
-
-
-// example data, this is what will be passed by the form
-    $result = '{"id": "abc123", "voted": "1", "party":"freeparking party", "mp":"somerandomguy"}';
-    $person = json_decode($result, true);
-
-//Check if the record exists, the database will not allow this insert but its better to catch the error here I think
-
-    $record_check = mysql_query("SELECT * FROM Vote WHERE id = '".$person['id']."' ");
-    $check_result = mysql_num_rows($record_check);
-
-    $sql = "INSERT INTO myvote.vote ($columns) VALUES ($values);";
-    $this->sendResponse($sql);
-
-//This person has not voted.
-    if ($check_result === 0) {
 
 
     }
-
-//they have, lets handle the error here
-    else {
-        $this->sendResponse("This person somehow managed to send their vote twice!!",false);
-    }
-
-
-}
 
     //Simple check for a person record
-    private function person_check(){
-        $person_name = $this->get['name'];
+    //insert person from a realme login and return person
+    /*
+Array
+(
+    [account_id] => 14
+    [username] => Luk1014
+    [name] => Luke
+    [dob] => 10/10/1979
+    [pob] => Auckland
+    [gender] => Male
+    [address] => Wellington
+    [phone] => 02102351775
+    [email] => luke@hardiman.co.zn
+    [city] => Auckland
+)
+     */
+    private function getPerson(){
 
-        $record_check = $this->db()->query("SELECT * FROM Person WHERE id = '$person_name' ");
-        $check_result = $this->db()->mysqli_num_rows($record_check);
 
+        $username = $this->get('username');
+        $name = $this->get('name');
+        $address = $this->get('address');
+        $city = $this->get('city');
+        $dob = $this->get('dob');
+        $pob  = $this->get('pob');
+        $email  = $this->get('email');
+        $gender  = $this->get('gender');
+        $phone  = $this->get('phone');
+
+        $sql = "INSERT INTO `myvote`.`Person` (`username`, `name`, `address`, `city`, `dob`, `pob`, `email`, `gender`, `phone`) VALUES ('$username', '$name', '$address', '$city', '$dob', '$pob', '$email', '$gender', '$phone');";
+
+        $record_check = $this->db()->query($sql);
+        //entry was fine
+        if ($record_check){
+
+            $this->sendResponse($this->getRecord($username));
+
+        }else{
+            //failed user will be in
+            if ($this->db()->errno == 1062){
+
+                $this->sendResponse($this->getRecord($username));
+            }
+
+            unset($_SESSION['username']);
+            //something wrong happend
+            $this->sendResponse("Failed error code l".$this->db()->errno,false);
+
+        }
+        //$check_result = $this->db()->mysqli_num_rows($record_check);
+        /*
         if ($check_result === 0) {
 
-//this person does not exit
+
 
         }
         else {
 
 
-        }
+        }*/
 
     }
+    private function getRecord($username){
+        $sql = "SELECT * FROM `Person` WHERE `username` = '$username'";
+        $result = $this->db()->query($sql);
+        $person = $result->fetch_assoc();
+        //set
 
+        $this->voted = ($person['voted'] == 0) ? false : true;
+        $_SESSION['username'] = $person['username'];
+        $this->username = $person['username'];
+        return $person;
+
+    }
+    private function canVote(){
+        return $this->username != null && $this->voted == false;
+    }
+    /*
+     * get value from $_GET if not set FAIL
+     */
+    private function get($key){
+        if (!isset($this->_get[$key]))
+            $this->sendResponse("Failed missing field : $key ",false);
+
+        return $this->_get[$key];
+    }
+    /*
+     * get value from $_POST if not set FAIL
+     */
+    private function post($key){
+        if (!isset($this->_post[$key]))
+            $this->sendResponse("Failed missing field : $key ",false);
+
+        return $this->_post[$key];
+    }
+
+    //returns the call from get
+    private function getCall(){
+        $keys = array_keys($this->_get);
+        return $keys[0];
+    }
     //send response back to caller
     private function sendResponse($data,$success=true){
         $response['data'] = $data;
@@ -188,8 +278,10 @@ private function record_vote(){
     }
 
 
+
+
 }
 
 //actons to our api create
-$realMe = new realme_api(array("create","login"));
-$realMe->run();
+$vote = new vote_api(array("getPerson","recordVote"));
+$vote->run();

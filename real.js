@@ -8,7 +8,7 @@ var svg=body.append("svg")
 
 var workspace =svg.append("svg")
 .attr("x", 0)
-.attr("y", 0)
+.attr("y", 100)
 .attr("height", height)
 .attr("width", width);
 
@@ -21,7 +21,7 @@ var realimg = workspace.append("image")
 .attr("width", 100)
 .attr("height", 100);
 
-
+writeText("This is a duplication of the Realme Login, please enter your details to set up your account.", 50, 10)
 writeText("Name: ", 50, 50);
 writeText("D.O.B (dd/mm/yy):",50,75);
 writeText("Place of birth: ", 50, 100);
@@ -30,6 +30,8 @@ writeText("Phone: ", 50, 150);
 writeText("Address: ", 50, 175);
 writeText("City: ", 50, 200);
 writeText("Email: ", 50, 225);
+writeText("Ensure you enter a correct cellphone number.", 50, 350)
+
 	var nameinput = workspace.append("foreignObject")
     .attr("x", 250)
     .attr("class", "nameinput")
@@ -148,7 +150,7 @@ var pobinput = workspace.append("foreignObject")
                 type : 'POST',
                 success : function(response){
                         if (response.success == true)
-                            location.href="index.html";
+                            location.href="vote.html";
                     else
                         alert("failed, please make sure all fields are entered")
                         console.log("response",response)

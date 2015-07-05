@@ -1,0 +1,6 @@
+[
+    {"team": "Act", "path":"bin/1.jpg","x": 200,"y", 150},
+    {"team": "Labour", "path":"bin/2.jpg","x": 300,"y", 150},
+    {"team": "Green", "path":"bin/3.jpg","x": 400,"y", 150}
+    
+]
