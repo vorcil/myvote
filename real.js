@@ -150,7 +150,7 @@ var pobinput = workspace.append("foreignObject")
                 type : 'POST',
                 success : function(response){
                         if (response.success == true)
-                            location.href="vote.html";
+                            location.href="login.html";
                     else
                         alert("failed, please make sure all fields are entered")
                         console.log("response",response)

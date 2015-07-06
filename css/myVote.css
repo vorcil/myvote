@@ -1,4 +1,3 @@
-/*==========================INDEX PAGE CSS=========================*/
 /*--- breaker ---*/
 .breaker{
     padding: 0.6%;
@@ -7,7 +6,15 @@
 .footer{
     background-color: #FF5722;
     padding: 3%;
+    
+    
 }
+
+.footer p, .footer li, .footer span{
+
+    font-family: sans-serif;
+}
+
 .left-footer a{
     font-size: 1.1em;
     color: #ffffff;
@@ -47,10 +54,90 @@
 .right-footer i:hover{
      background-color: #FF7043 !important;
     cursor: pointer !important;
-}
-/*==========================ABOUT PAGE CSS=========================*/
-.importantDatesSect{
+ }
+/*============================REALME LOGIN PAGE CSS==========================*/
+.loginForm{
+    background: -webkit-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* IE10 */
+    background:      -o-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* Opera 11.10+ */
+    background:         linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* W3C */
 
+    padding: 5%;
+}
+.tabHead{
+    background-color: #424242;
+    padding: 0.10%;
+    color: #ffffff;
+    width: 55%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.tabHead i{
+    font-size: 2em;
+    margin-top: 5%;
+    margin-left: 15.4%;
+}
+.loginFormInputSect{
+    background: linear-gradient(#424242, #616161, #757575);
+    padding: 3%;
+    width: 74%;
+    margin: auto !important;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.checkbox input{
+    margin-left: 5% !important;
+}
+.checkbox span{
+    color: #ffffff;
+}
+.signInBtn button{
+    width: 100%;
+    padding: 3%;
+    background-color: #D84315;
+    color: #ffffff;
+}
+.forgotPassBtn button{
+    width: 100%;
+    padding: 3%;
+    background-color: #424242;
+}
+.loginFormInputSect button:hover{
+    background-color: #FF7043;
+}
+@media (max-width: 411px) {
+    .tabHead{
+        margin-left: 12.9%;
+    }
+    .tabHead i{
+        margin-top: 11%;
+    }
+    .styleHR{
+        display: none;
+    }
+    .loginForm{
+        margin-top: 10%;
+    }
+    .loginFormInputSect button{
+        width: 200px !important;
+        padding: 3%;
+        text-align: center;
+    }
+}
+@media (max-width: 1200px) {
+    .tabHead{
+        margin-left: 12.95%;
+    }
+    .loginForm{
+        margin-top: 10%;
+    }
+    .loginFormInputSect button{
+        width: 220px !important;
+        padding: 3%;
+        text-align: center;
+    }
 }
 /*==========================REGISTER PAGE CSS============================*/
 .registrationForm{

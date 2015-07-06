@@ -37,7 +37,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">MyVote</a>
+            <!-- <a class="navbar-brand page-scroll" href="#page-top">MyVote</a> -->
+            <a href="index.html" class="pull-left"><img src="img/logo-sml.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,14 +48,14 @@
                     <a href="about.html">About</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="login.html">Login</a>
+                    <a href="login.html">Login</a>
                     <!-- <li>
                     <a class="page-scroll" href="#">MyEnrolement</a>
                     </li> -->
                 </li>
 
                 <li>
-                    <a class="page-scroll" href="register.html">Enrol</a>
+                    <a href="register.html">Enroll</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
@@ -95,17 +96,17 @@
                 <div class="checkbox">
                     <label>
                         <input type="checkbox">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span>Remember Me</span>
                     </label>
                 </div>
             </div>
             <div class="col-lg-10 col-lg-offset-1 input-group signInBtn">
-                <button id="login" class="btn btn-default">Log In</button>
+                <button class="btn btn-default">Log In</button>
             </div>
             <br/>
             <div class="col-lg-10 col-lg-offset-1 input-group forgotPassBtn">
-                <button class="btn btn-default">Forgotten Password</button>
+                <button class="btn btn-default" onclick="myFunction()">Forgotten Password</button>
             </div>
             <div class="loginMessage">
                 <h4>Please enter your text-verified RealME login username and password.</h4>
@@ -118,22 +119,23 @@
 <div style="font-size: 0.1px;">sdf</div>
 <!--- footer --->
 <footer>
+
     <section id="contact" class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 left-footer">
-                    <a href="index.html">
-                        <img src="img/logo-white.png" width="200">
-                    </a>
+                    <a href="index.html"><img src="img/logo-sml-white.png"></a>
                     <br/><br/>
+
                     <ul class="list-unstyled">
-                        <li><a href="#">MyVote</a></li>
+
                         <li><a href="about.html">About</a></li>
                         <li><a href="login.html">Login</a></li>
                         <li><a href="sitemap.html">Site Map</a></li>
                         <li><a href="accessibility.html">Accessibility</a></li>
                         <li><a href="privacy.html">Privacy</a></li>
                     </ul>
+
                     <p style="margin-top: 5px">MyVote &copy; 2015</p>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 middle-footer">
@@ -155,7 +157,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 right-footer">
                     <h4>About</h4>
-                    <span>Our about message is still under construction.</span>
+                    <span>We are breaking these barriers though MyVote - the first site in NZ that addresses all voting requirements. The future of voting is here.</span>
                     <br/><br/>
                     <i class="fa fa-facebook"></i>
                     &nbsp;
@@ -184,58 +186,14 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
+
+<!--- message for forgotten password feature --->
 <script>
-    $(document).ready(function(){
-        $("#login").click(function(){
-
-            var login_details  = {
-                username : $('#username').val(),
-                password : $('#password').val()
-            };
-            $.ajax({
-                url : "realme_api.php?login",
-                data : login_details,
-                dataType : 'jsonp',
-                method : 'POST',
-                success : function(response) {
-                    console.log("response", response);
-
-                    if (response.success == true)
-                    getPerson(response.data);
-                    else
-                    $(".loginMessage").text("Incorrect realMe login details").css('color','red')
-                }
-
-            });
-            //console.log("login_details",login_details)
-        })
-    })
-    function getPerson(response){
-        //now we send request to our mvote api
-        $.ajax({
-            url : "vote_api.php?getPerson",
-            data : response,
-            dataType : 'jsonp',
-            method : 'GET',
-            success : function(response) {
-
-
-                if (response.success == true){
-                    if (response.data.voted == 1){
-                        alert("You have already voted.");
-                        return;
-                    }
-                    else
-                    location.href = "vote.html";
-                }else
-                    $(".loginMessage").text("Incorrect realMe login details").css('color','red')
-                console.log("response", response);
-            }
-
-        });
-
+    function myFunction() {
+        alert("Sorry but this feature is still undergoing development.");
     }
 </script>
+
 <!---
 
  var submit = workspace.append("image")

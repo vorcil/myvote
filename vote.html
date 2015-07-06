@@ -58,14 +58,14 @@
                     <a href="about.html">About</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#services">Login</a>
+                    <a class="page-scroll" href="login.html">Login</a>
                     <!-- <li>
                     <a class="page-scroll" href="#">MyEnrolement</a>
                     </li> -->
                 </li>
 
                 <li>
-                    <a class="page-scroll" href="#portfolio">Enrole</a>
+                    <a class="page-scroll" href="#portfolio">Enroll</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
@@ -78,13 +78,13 @@
 </nav>
 
 <!---------------- party vote section ------------------------>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 partyVoteHeader">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 partyVoteHeader" style="margin-top: 50px;">
     <h2>Select a party to vote</h2>
     <hr/>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>
 <section class="no-padding" id="portfolio">
-    <div class="container-fluid">
+    <div class="container-fluid partyBannerHolder">
         <div class="row no-gutter">
             <div class="col-lg-4 col-sm-6">
                 <a href="#" id="actparty" type="party" selected="false" class="portfolio-box">
@@ -290,7 +290,7 @@
                         <i class="fa fa-circle"></i>
                         <a href="#">About</a>
                         <i class="fa fa-circle"></i>
-                        <a href="#">Login</a>
+                        <a href="login.html">Login</a>
                         <p style="margin-top: 5px">MyVote &copy; 2015</p>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 middle-footer">
@@ -340,8 +340,16 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
-<script src="js/vote.js"></script>
+<script>
+    $(".portfolio-box").click(function(){
+        var party_name = $(this).attr('id');
 
+
+        console.log("image",party_name)
+        $(this).css('opacity','0.5')
+    })
+
+</script>
 </body>
 
 </html>
