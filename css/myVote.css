@@ -200,3 +200,141 @@
         display: none;
     }
 }
+/*========================= VISUAL PAGE CSS ===========================*/
+.partyVoteHeader{
+    text-align: center;
+}
+.mpVoteHeader{
+    text-align: center;
+    padding: 2%;
+    background: -webkit-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* IE10 */
+    background:      -o-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* Opera 11.10+ */
+    background:         linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* W3C */
+}
+.mpVoteSection{
+    padding: 1%;
+    margin-top: 0px !important;
+    padding-bottom: 5%;
+    background: -webkit-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* IE10 */
+    background:      -o-linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* Opera 11.10+ */
+    background:         linear-gradient(90deg, #8e9eab 10%, #eef2f3 90%); /* W3C */
+}
+.mpVoteSection h4{
+    text-align: center;
+}
+/*=========IMAGE HOVER EFFECT CSS===========*/
+/*-------------team pic hover css------------*/
+.view {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+.view i{
+    margin-top: 10px;
+    font-size: 2.5em;
+}
+.view .mask, .view .content {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 42%;
+    top: 0;
+    left: 0
+}
+.view h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0
+}
+.view p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000
+}
+.view-first img {
+    transition: all 0.2s linear;
+}
+.view-first .mask {
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(219,127,8, 0.7);
+    transition: all 0.4s ease-in-out;
+}
+.view-first h2 {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.view-first p {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.2s linear;
+}
+.view-first a.info{
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.view-first:hover img {
+    transform: scale(1.1);
+}
+.view-first:hover .mask {
+    opacity: 1;
+}
+.view-first:hover h2,
+.view-first:hover i,
+.view-first:hover p,
+.view-first:hover a.info {
+    opacity: 1;
+    transform: translateY(0px);
+}
+.view-first:hover i {
+    transition-delay: 0.1s;
+}
+.view-first:hover p {
+    transition-delay: 0.1s;
+}
+.view-first:hover a.info {
+    transition-delay: 0.2s;
+}
+/*******************/
+/*-------------team css--------------*/
+.teamHeader{
+    background-color: #CDCBC8;
+    margin-bottom: 5%;
+    color: #C13C3B;
+}
+.teamHeader h1, p{
+    margin-left: 15%;
+}
+.test{
+    width: 250px;
+    margin-left: 1.5%;
+}
+.test p{
+    margin-left: 0;
+}
