@@ -19,6 +19,7 @@ $(document).ready(function(){
         var mp_vote = $(this).attr('mp_name');
         console.log("mp_vote",mp_vote);
         vote_details.mp = mp_vote;
+	$(this).css('opacity','0.2');
         $(".mp-vote").unbind("click");
     })
 
