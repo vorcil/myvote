@@ -241,6 +241,12 @@
                 "city": cityinput,
                 "email": emailinput
             }]
+
+        if (!/^02[0-9]\d{5,9}/.test(phoneinput)){
+            alert("Sorry mobile number need to be in following format eg.0207777666");
+            return;
+        }
+        //check cellphone number
         //your php server load script here;
         //location.href="index.html";
         //send the data to our fake realme api
