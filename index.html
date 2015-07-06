@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <title>MyVote - Your online voting portal</title>
 
     <!-- Bootstrap Core CSS -->
@@ -33,32 +34,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-
-    <!-- favicon generator -->
-
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ff5722">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-<meta name="theme-color" content="#ffffff">
-
 </head>
 
 <body id="page-top">
-
+    <!-- <script src="index.js"></script>-->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -69,8 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- <a class="navbar-brand page-scroll" href="#page-top">MyVote</a> -->
-                <a href="index.html" class="pull-left"><img src="img/logo-sml.png"></a>
+                <a class="navbar-brand page-scroll" href="#page-top">MyVote</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,14 +58,14 @@
                         <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href="login.html">Login</a>
+                        <a class="page-scroll" href="login.html">Login</a>
                         <!-- <li>
                         <a class="page-scroll" href="#">MyEnrolement</a>
                         </li> -->
                     </li>
-
+                    
                     <li>
-                        <a href="register.html">Enroll</a>
+                        <a class="page-scroll" href="register.html">Enrol</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -100,20 +78,14 @@
     </nav>
 
     <header>
-        <div class="header-img">
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Step out of line</h1>
+                <h1>Vote online!</h1>
                 <hr>
-                <p>Online Voting is more than utilising technology, it is about breaking down barriers. The core of MyVote is that it is a one stop shop – from digital enrolment to on the day voting with all the other parts in between – it covers everything any voter might need.</p>
-                 <a href="register.html" class="btn btn-primary btn-xl page-scroll">Enroll and vote online</a>
-        
-                <div class="line-img">
-                </div>
-
+                <p>There is currently a large proportion of enrolled New Zealand citizens (over one million) who did not manage to vote. The point of the electronic voting application is to enable and encourage those who did not vote in the last election to participate in the next election; simutaneously to provide a set of tools for separate voting problems like the flag referendum.</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Vote Now</a>
             </div>
         </div>
-    </div>
     </header>
 
     <section class="bg-primary" id="about">
@@ -122,9 +94,10 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Check your enrolment details</h2>
                     <hr class="light">
-                    <p class="text-faded">We are breaking these barriers though MyVote - the first site in NZ that addresses all voting requirements. The future of voting is here.</p>
-                    <a href="login.html" class="btn btn-default btn-xl">Check enrolement</a>
-                </div>
+                    <p class="text-faded">It's always important to make sure you're enrolled and ready to vote.
+                        How else will you be able to have your say on the issues that affect you, your family, and New Zealand?</p>
+                    <a href="register.html" class="btn btn-default btn-xl">Check enrolment</a>
+		</div>
             </div>
         </div>
     </section>
@@ -143,40 +116,41 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-eye wow bounceIn text-primary"></i>
-                        <h3>Security &amp; Accessibility</h3>
-                        <p class="text-muted">MyVote ensures inclusivity of the greatest possible number of electors by adhering to W3C and Government standards.</p>
+                        <h3>Convenience &amp; Accessibility</h3>
+                        <p class="text-muted">You should be able to vote from any location that works for you. My Vote is available on all web enabled devices.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x  fa-map-marker wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Location &amp; Convenience</h3>
-                        <p class="text-muted">By providing ubiquitous access from any internet enabled device, accessibility and mobility issues are addressed.</p>
+                        <i class="fa fa-4x  fa-lock wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Safety &amp; Security</h3>
+                        <p class="text-muted">Our full range of security measures, including our Online Voting Guarantee and dedicated in-house security team,
+                            helps to keep your online experience as safe as possible.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-calendar wow bounceIn text-primary" data-wow-delay=".2s"></i>
                         <h3>Up to Date</h3>
-                        <p class="text-muted">With key dates and reminder facility our busy electors should easily find the small amount of time required to register their choice.</p>
+                        <p class="text-muted">My Vote uses the most up-to date technologies available to ensure we provide you with the best experience possible.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-pie-chart wow bounceIn text-primary" data-wow-delay=".3s"></i>
                         <h3>Feedback and data visuals</h3>
-                        <p class="text-muted">With a clear visual approach we hope to lift the mist surrounding New Zealand Politics and electors options.</p>
+                        <p class="text-muted">The outcome of the general elections is important to all New Zealanders.
+                            My Vote takes the results and statistics from the election and displays them using easy to understand viuals</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <section class="no-padding" >
+    <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -185,13 +159,13 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                    Act
+                                    Party Name
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -200,13 +174,13 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                    Labour
+                                    Party Name
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -215,13 +189,13 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                   Green
+                                    Party Name
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -230,13 +204,13 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                    Internet Mana
+                                    Party Name
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -245,13 +219,13 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                    National
+                                    Party Name
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -260,13 +234,13 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                    Maori
+                                    Party Name
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-4">
+                <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/7.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -275,82 +249,7 @@
                                     Party
                                 </div>
                                 <div class="project-name">
-                                    NZ First
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                 <div class="col-lg-3 col-sm-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/8.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Party
-                                </div>
-                                <div class="project-name">
-                                    United Future
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                 <div class="col-lg-3 col-sm-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/9.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Party
-                                </div>
-                                <div class="project-name">
-                                    Conservative
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                 <div class="col-lg-3 col-sm-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/10.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Party
-                                </div>
-                                <div class="project-name">
-                                    NZIC
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                 <div class="col-lg-3 col-sm-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/11.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Party
-                                </div>
-                                <div class="project-name">
-                                    Democrats
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                 <div class="col-lg-3 col-sm-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/12.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Party
-                                </div>
-                                <div class="project-name">
-                                    Focus
+                                    Party Name
                                 </div>
                             </div>
                         </div>
@@ -360,7 +259,7 @@
         </div>
     </section>
 
-    <aside class="bg-dark" id="portfolio">
+    <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Login with RealMe</h2>
@@ -375,11 +274,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 left-footer">
-                    <a href="index.html"><img src="img/logo-sml-white.png"></a>
+                    MyVote Logo
                     <br/><br/>
 
                     <ul class="list-unstyled">
-                       
+                        <li><a href="#">MyVote</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="login.html">Login</a></li>
                         <li><a href="sitemap.html">Site Map</a></li>
@@ -408,7 +307,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 right-footer">
                     <h4>About</h4>
-                    <span>We are breaking these barriers though MyVote - the first site in NZ that addresses all voting requirements. The future of voting is here.</span>
+                    <span>Our about message is still under construction.</span>
                     <br/><br/>
                     <i class="fa fa-facebook"></i>
                     &nbsp;

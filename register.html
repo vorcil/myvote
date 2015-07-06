@@ -37,8 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!-- <a class="navbar-brand page-scroll" href="#page-top">MyVote</a> -->
-            <a href="index.html" class="pull-left"><img src="img/logo-sml.png"></a>
+            <a class="navbar-brand" href="index.html">MyVote</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,14 +47,14 @@
                     <a href="about.html">About</a>
                 </li>
                 <li>
-                    <a href="login.html">Login</a>
+                    <a class="page-scroll" href="login.html">Login</a>
                     <!-- <li>
                     <a class="page-scroll" href="#">MyEnrolement</a>
                     </li> -->
                 </li>
 
                 <li>
-                    <a href="register.html">Enroll</a>
+                    <a class="page-scroll" href="register.html">Enrol</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
@@ -73,14 +72,14 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 registerFormHead">
             <div class="col-lg-9 registerTitle">
-                <h3>Enroll</h3>
+                <h3>Enrol to Vote</h3>
             </div>
             <div class="col-lg-3 registerQuest">
                 <i class="fa fa-question"></i>
             </div>
         </div>
         <div class="registerFormDesc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Complete the form below to enrol to vote.</p>
         </div>
         <div class="formContainer">
             <div class="col-lg-8 col-lg-offset-4 registerFormBody">
@@ -141,7 +140,7 @@
                     <input type="text" class="form-control" id="emailinput" placeholder="Email">
                 </div>
                 <br/>
-                <button class="btn btn-info pull-right">Submit</button>
+                <button id="submit" class="btn btn-info pull-right">Submit</button>
             </div>
         </div>
     </div>
@@ -155,18 +154,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 left-footer">
-                    <a href="index.html"><img src="img/logo-sml-white.png"></a>
+                    MyVote Logo
                     <br/><br/>
-
                     <ul class="list-unstyled">
-
+                        <li><a href="#">MyVote</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="login.html">Login</a></li>
                         <li><a href="sitemap.html">Site Map</a></li>
                         <li><a href="accessibility.html">Accessibility</a></li>
                         <li><a href="privacy.html">Privacy</a></li>
                     </ul>
-
                     <p style="margin-top: 5px">MyVote &copy; 2015</p>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 middle-footer">
@@ -188,7 +185,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 right-footer">
                     <h4>About</h4>
-                    <span>We are breaking these barriers though MyVote - the first site in NZ that addresses all voting requirements. The future of voting is here.</span>
+                    <span>Our about message is still under construction.</span>
                     <br/><br/>
                     <i class="fa fa-facebook"></i>
                     &nbsp;
@@ -218,31 +215,32 @@
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
 
+
 <script>
-    .on("click", function(d) {
-        name=document.getElementById('nameinput').value;
-        dobinput=document.getElementById('dobinput').value;
-        pobinput=document.getElementById('pobinput').value;
-        genderinput=document.getElementById('genderinput').value;
-        phoneinput=document.getElementById('phoneinput').value;
-        addressinput=document.getElementById('addressinput').value;
-        cityinput=document.getElementById('cityinput').value;
-        emailinput=document.getElementById('emailinput').value;
+    $('#submit').on("click", function(d) {
+        name = document.getElementById('nameinput').value;
+        dobinput = document.getElementById('dobinput').value;
+        pobinput = document.getElementById('pobinput').value;
+        genderinput = document.getElementById('genderinput').value;
+        phoneinput = document.getElementById('phoneinput').value;
+        addressinput = document.getElementById('addressinput').value;
+        cityinput = document.getElementById('cityinput').value;
+        emailinput = document.getElementById('emailinput').value;
         temp = [
             {
-                "name":name,
-                "dob":dobinput,
-                "pob":pobinput,
-                "gender":genderinput,
-                "address":addressinput,
-                "phone" : phoneinput,
-                "city":cityinput,
-                "email":emailinput
+                "name": name,
+                "dob": dobinput,
+                "pob": pobinput,
+                "gender": genderinput,
+                "address": addressinput,
+                "phone": phoneinput,
+                "city": cityinput,
+                "email": emailinput
             }]
         //your php server load script here;
         //location.href="index.html";
         //send the data to our fake realme api
-        console.log("temp",temp[0])
+        console.log("temp", temp[0])
 
         $.ajax({
             url :"realme_api.php?create",
@@ -261,6 +259,7 @@
 
             }
         });
+    });
 </script>
 
 
