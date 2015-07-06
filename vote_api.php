@@ -148,6 +148,9 @@ class vote_api
     private function getRecord($username){
         $sql = "SELECT * FROM `Person` WHERE `username` = '$username'";
         $result = $this->db()->query($sql);
+
+        if (!$result || $result->num_rows < 0)die("fatal no person");
+
         $person = $result->fetch_assoc();
         //set
 
@@ -157,9 +160,19 @@ class vote_api
         return $person;
 
     }
+    //can they vote
     private function canVote(){
         return $this->username != null && $this->voted == false;
     }
+    //checks if they are allowed to see vote.html
+    private function allowedVote(){
+        if ($this->username != null){
+             $this->getRecord($this->username);
+            $this->sendResponse("",$this->username != null && $this->voted == false);
+        }
+        $this->sendResponse("",false);
+    }
+
     /*
      * get value from $_GET if not set FAIL
      */
@@ -207,5 +220,5 @@ class vote_api
 }
 
 //actions allowed to our api create
-$vote = new vote_api(array("getPerson","recordVote"));
+$vote = new vote_api(array("getPerson","recordVote","allowedVote"));
 $vote->run();
