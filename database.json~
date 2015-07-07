@@ -1,8 +1,0 @@
-[
-    /* each sequential entry in the database ends with comma except final entry*/
-    {"name": "Joel1", "password": "pw1", "city":"Wellington", "party":"null", "mp": "null", "address":"100 street", "enrolled":0},
-    
-    {"name": "Joel2", "password": "pw2", "city":"Wellington", "party":"null", "mp": "null", "address":"100 street", "enrolled":0},
-    
-    {"name": "Joel3", "password": "pw3", "city":"Wellington", "party":"null", "mp": "null", "address":"100 street", "enrolled":0},
-]
