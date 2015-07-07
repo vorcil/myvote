@@ -78,6 +78,8 @@ class vote_api
 
 
     private function recordVote(){
+        //first thing destroy session
+        session_destroy();
         /*
          * Array
         (
@@ -91,6 +93,8 @@ class vote_api
             $party = $this->get("party");
             $mp = $this->get("mp");
             $this->voted = true;
+
+
             $sql = "INSERT INTO `myvote`.`Vote` (`party`, `mp`) VALUES ('$party', '$mp');";
             $this->db()->query($sql);
             $username = $this->username;
@@ -99,6 +103,7 @@ class vote_api
             $result = $this->db()->query($sql);
 
             $this->sendResponse("Vote casted");
+
         }
         $this->sendResponse("failed to cast",false);
 
@@ -168,11 +173,10 @@ class vote_api
     private function allowedVote(){
         if ($this->username != null){
              $this->getRecord($this->username);
-            $this->sendResponse("",$this->username != null && $this->voted == false);
+             $this->sendResponse("",$this->username != null && $this->voted == false);
         }
         $this->sendResponse("",false);
     }
-
     /*
      * get value from $_GET if not set FAIL
      */

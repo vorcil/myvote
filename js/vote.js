@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //check to make sure user can vote and is logged in else redirect to index.html this should be done server side but for now okay
-    $.ajax({
+    /*$.ajax({
         url : "vote_api.php?allowedVote",
         dataType : 'jsonp',
         method : 'GET',
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
         }
 
-    });
+    });*/
     var vote_details = {
         party : null,
         mp : null

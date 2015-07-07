@@ -1,3 +1,13 @@
+<?php
+if (session_id() == "") session_start();
+
+//check session for our voter
+if (!isset($_SESSION['username'])){
+    header("Location: index.html");//set the redirect so no headers get sent to client
+    die();//die for now makeing sure headers get sent
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
