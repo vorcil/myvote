@@ -1,0 +1,3 @@
+#Rewrite vote.html to vote.php
+RewriteEngine On
+RewriteRule vote.html vote.php [L]
