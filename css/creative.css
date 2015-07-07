@@ -173,17 +173,46 @@ aside {
 }
 
 header {
+
+background: -webkit-linear-gradient(90deg, #136a8a 10%, #267871 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #136a8a 10%, #267871 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #136a8a 10%, #267871 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #136a8a 10%, #267871 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #136a8a 10%, #267871 90%); /* W3C */
+
+
     position: relative;
     width: 100%;
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url(../img/header.jpg);
+    padding-top: 200px;
+
+
+/*    background-image: url(../img/header.png);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+*/
+
+
+}
+
+.logo-img {
+
+   
+   height: 200px; 
+    width: 100%;
+
+background-image: url(../img/wide-logo-33.png);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
 }
 
 header .header-content {
@@ -191,6 +220,13 @@ header .header-content {
     width: 100%;
     padding: 100px 15px;
     text-align: center;
+    
+}
+
+header .header-content-inner{
+
+    padding-top: 0px;
+
 }
 
 header .header-content .header-content-inner h1 {
@@ -211,9 +247,24 @@ header .header-content .header-content-inner p {
     color: rgba(255,255,255,.7);
 }
 
+header .line-img{
+
+    width: 100%;
+    height: 200px;
+
+background-image: url(../img/line.png);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+}
+
 @media(min-width:768px) {
     header {
         min-height: 100%;
+
     }
 
     header .header-content {
@@ -224,6 +275,12 @@ header .header-content .header-content-inner p {
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
+    header .header-content-inner{
+
+    padding-top: 100px;
+
+}
 
     header .header-content .header-content-inner {
         margin-right: auto;
@@ -239,8 +296,14 @@ header .header-content .header-content-inner p {
     }
 }
 
+@media(max-width: 300px){
+    header .header-content-inner{
+       padding-top: 0px !important;     
+}
+}
+
 .section-heading {
-    margin-top: 0;
+    margin-top: 100;
 }
 
 .service-box {
@@ -252,6 +315,8 @@ header .header-content .header-content-inner p {
     .service-box {
         margin: 20px auto 0;
     }
+
+
 }
 
 .service-box p {

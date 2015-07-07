@@ -6,8 +6,6 @@
  * Time: 10:55 PM
  * @description : basic hack job for an api sooo wrong...
  */
-
-
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
@@ -67,7 +65,7 @@ class realme_api {
         $password = $this->post['password'];
         $sql = "SELECT * FROM myvote.realme WHERE username = '$username' AND password = '$password' LIMIT 1";
         $results = $this->db()->query($sql);
-        if ($results && $results->num_rows > 0){
+        if ($results){
             $person = $results->fetch_assoc();
             unset($person['password']);
             $this->sendResponse($person);

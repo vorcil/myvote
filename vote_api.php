@@ -1,9 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: michael
- * Date: 5/07/2015
- * Time: 1:16 AM
+ * User: Luke Hardiman & Michael
+ * Date: 04/07/2015
+ * Time: 10:55 PM
+ * @description : vote_api handles/mimics api framework...
  */
 
 ini_set('display_errors',1);
@@ -65,68 +66,15 @@ class vote_api
     }
 
 
-    //create a new person
 
-    private function create_person(){
-
-    //This code has not been tested yet and is not complete!! I have tried to implement some basic integrity checks
-
-    //example data
-        /*$result = '{"id": "abc123", "name": "Jane", "address":"12 a street", "city":"Wellington", "dob": "31/5/1956", "pob":"Wellington",
-     "email":"me@email.com","gender":"Female", "phone":"02152526", "enrolled": "1"}';
-        $person = json_decode($result, true);*/
-    //for testing
-
-    //print_r($person);
-
-    //not working but its a check we should so
-        /*
-        if($person['id'] === null){
-            $this->sendResponse ("The id is not there, something went wrong!",false);
-
-        }
-    */
-    //query the database for the id that has been provided
-        $record_check = mysql_query("SELECT * FROM Person WHERE id = '".$person['name']."' ");
-        $check_result = mysql_num_rows($record_check);
-
-    //Check to see if the person exists
-
-    //if they dont insert the new record
-        if ($check_result === 0) {
-            mysql_query("INSERT INTO  `myvote`.`Person` (`id`,
-    `password`,
-    `name`,
-    `address`,
-    `city`,
-    `dob`,
-    `pob`,
-    `email`,
-    `gender`,
-    `phone`,
-    `enrolled`)
-      VALUES ('".$person['id']."', '".$person['name']."', '".$person['address']."', '".$person['city']."', '".$person['dob']."', '".$person['pob']."', '".$person['email']."'
-      , '".$person['gender']."', '".$person['phone']."', '".$person['enrolled']."')");
-
-            $this->sendResponse("Insert complete");
-        }
-
-    //if they do return an error
-        else {
-            //echo ("Someone already has that id! stop trying to rig votes!!");
-            $this->sendResponse ("Someone already has that id! stop trying to rig votes!!",false);
-        }
-
-
-    }
 
     //connect to the db
-private function db(){
-    //singleton
-    if ($this->db_connect == null)
-        $this->db_connect = new mysqli($this->db_host, $this->db_username, $this->db_password, $this->db_name);
-    return $this->db_connect;
-}
+    private function db(){
+        //singleton
+        if ($this->db_connect == null)
+            $this->db_connect = new mysqli($this->db_host, $this->db_username, $this->db_password, $this->db_name);
+        return $this->db_connect;
+    }
 
 
     private function recordVote(){
@@ -160,21 +108,7 @@ private function db(){
 
     //Simple check for a person record
     //insert person from a realme login and return person
-    /*
-Array
-(
-    [account_id] => 14
-    [username] => Luk1014
-    [name] => Luke
-    [dob] => 10/10/1979
-    [pob] => Auckland
-    [gender] => Male
-    [address] => Wellington
-    [phone] => 02102351775
-    [email] => luke@hardiman.co.zn
-    [city] => Auckland
-)
-     */
+
     private function getPerson(){
 
 
@@ -208,22 +142,15 @@ Array
             $this->sendResponse("Failed error code l".$this->db()->errno,false);
 
         }
-        //$check_result = $this->db()->mysqli_num_rows($record_check);
-        /*
-        if ($check_result === 0) {
 
-
-
-        }
-        else {
-
-
-        }*/
 
     }
     private function getRecord($username){
         $sql = "SELECT * FROM `Person` WHERE `username` = '$username'";
         $result = $this->db()->query($sql);
+
+        if (!$result || $result->num_rows < 0)die("fatal no person");
+
         $person = $result->fetch_assoc();
         //set
 
@@ -233,9 +160,19 @@ Array
         return $person;
 
     }
+    //can they vote
     private function canVote(){
         return $this->username != null && $this->voted == false;
     }
+    //checks if they are allowed to see vote.html
+    private function allowedVote(){
+        if ($this->username != null){
+             $this->getRecord($this->username);
+            $this->sendResponse("",$this->username != null && $this->voted == false);
+        }
+        $this->sendResponse("",false);
+    }
+
     /*
      * get value from $_GET if not set FAIL
      */
@@ -282,6 +219,6 @@ Array
 
 }
 
-//actons to our api create
-$vote = new vote_api(array("getPerson","recordVote"));
+//actions allowed to our api create
+$vote = new vote_api(array("getPerson","recordVote","allowedVote"));
 $vote->run();
