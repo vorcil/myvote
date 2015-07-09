@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Pie Chart</title>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="js/Chart.min.js"></script>
+	</head>
+	<body>
+		<div id="canvas-holder">
+
+		</div>
+
+
+	<script>
+
+		var pieData = [
+				{
+					value: 300,
+					color:"#F7464A",
+					highlight: "#FF5A5E",
+					label: "Red"
+				},
+				{
+					value: 50,
+					color: "#46BFBD",
+					highlight: "#5AD3D1",
+					label: "Green"
+				},
+				{
+					value: 100,
+					color: "#FDB45C",
+					highlight: "#FFC870",
+					label: "Yellow"
+				},
+				{
+					value: 40,
+					color: "#949FB1",
+					highlight: "#A8B3C5",
+					label: "Grey"
+				},
+				{
+					value: 120,
+					color: "#4D5360",
+					highlight: "#616774",
+					label: "Dark Grey"
+				}
+
+			];
+
+		$(document).ready(function(){
+
+
+                function createColors(intAmount){
+                    var the_colors = [];
+                    for(var x = 0; x < intAmount + 2 ;x++){
+                        var color_chart = {
+                            color:'#' + (Math.random()*0xFFFFFF<<0).toString(16),
+                            highlight:'#' + (Math.random()*0xFFFFFF<<0).toString(16)
+                        }
+
+                        the_colors.push(color_chart);
+                        console.log("adding")
+                    }
+                    return the_colors;
+                }
+
+
+
+
+
+
+
+                //'#'+(Math.random()*0xFFFFFF<<0).toString(16);
+                $.ajax({
+                    url : "data_scrapper/election_results_2014.php",
+                    dataType : 'jsonp',
+                    method : 'GET',
+                    success : function(response) {
+                        console.log("response type",typeof response);
+                        var $theChartArea = $("#canvas-holder");
+                        console.log("length",Object.keys(response.data).length);
+                        if (typeof response.data == "object"){
+
+
+                                if (Object.keys(response.data).length > 1){
+
+
+
+                                $.map(response.data,function(value,index){
+                                    var thePieData = [],$canvas;
+                                    if (typeof value == "object" && Object.keys(value).length > 1){
+                                        var the_id = index.split(' ').join('_')
+                                        //console.log("value", value);
+
+                                        /*
+                                        theChartArea.append('<div><h5>'+index+'</h5>' +
+                                        ' <canvas id="'+ the_id +'" width="300" height="300"/> '+
+                                        '</div>');
+                                         <h4>'+index+'</h4>
+                                        */
+                                        $canvas = $( '<canvas />', {
+                                            width:'300', height:'300', id:the_id ,text:index}
+                                        )
+                                        $theChartArea.append('<h1>'+index+'</h1>').append($canvas)
+
+                                        var color_index = 0;
+                                        var colors = createColors(Object.keys(value).length);
+                                        $.map(value,function(value,label) {
+
+                                            var theData = {
+                                                value: value,
+                                                color:colors[color_index].color,
+                                                highlight:colors[color_index].highlight,
+                                                label: label
+                                            };
+                                            color_index++;
+                                            thePieData.push(theData);
+                                            //console.log("value", value);
+                                            //console.log("index", index);
+                                        });
+                                        color_index = 0;
+                                        //if ($canvas.length > 1){
+                                        //console.log("thePieData",$canvas);
+                                        //console.log("theid",$canvas[0].getContext('2d')
+                                        var $ctx = $canvas[0].getContext('2d');
+                                        //var ctx = document.getElementById(the_id).getContext("2d");
+                                        window.myPie = new Chart($ctx).Pie(thePieData);
+
+                                    }
+                                })
+                            }
+                        }
+
+
+                    }
+
+                });
+
+                //var ctx = document.getElementById("chart-area").getContext("2d");
+				//window.myPie = new Chart(ctx).Pie(pieData);
+        })
+
+
+
+	</script>
+	</body>
+</html>
