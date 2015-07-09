@@ -1,52 +1,136 @@
-<!doctype html>
-<html>
-	<head>
-		<title>Pie Chart</title>
+<!DOCTYPE html>
+<html lang="en">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script src="js/Chart.min.js"></script>
-	</head>
-	<body>
-		<div id="canvas-holder">
+<head>
 
-		</div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MyVote - Your online voting portal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    <link rel="stylesheet" href="css/myVote.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+    <!-- favicon generator -->
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ff5722">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body id="page-top">
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <a class="navbar-brand page-scroll" href="#page-top">MyVote</a> -->
+            <a href="index.html" class="pull-left"><img src="img/logo-sml.png"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="login.html">Login</a>
+                    <!-- <li>
+                    <a class="page-scroll" href="#">MyEnrolement</a>
+                    </li> -->
+                </li>
+
+                <li>
+                    <a href="register.html">Enrol</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<section>
+    <div class="header-img">
+        <div class="header-content">
+            <h1 style="font-size: 65px;">Election Vote Stats 2014</h1>
+        </div>
+    </div>
+</section>
+
+
+    <div id="canvas-holder">
+
+    </div>
+
+
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+<script src="js/wow.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/creative.js"></script>
+<script src="js/Chart.min.js"></script>
+
 
 
 	<script>
-
-		var pieData = [
-				{
-					value: 300,
-					color:"#F7464A",
-					highlight: "#FF5A5E",
-					label: "Red"
-				},
-				{
-					value: 50,
-					color: "#46BFBD",
-					highlight: "#5AD3D1",
-					label: "Green"
-				},
-				{
-					value: 100,
-					color: "#FDB45C",
-					highlight: "#FFC870",
-					label: "Yellow"
-				},
-				{
-					value: 40,
-					color: "#949FB1",
-					highlight: "#A8B3C5",
-					label: "Grey"
-				},
-				{
-					value: 120,
-					color: "#4D5360",
-					highlight: "#616774",
-					label: "Dark Grey"
-				}
-
-			];
 
 		$(document).ready(function(){
 
@@ -55,8 +139,8 @@
                     var the_colors = [];
                     for(var x = 0; x < intAmount + 2 ;x++){
                         var color_chart = {
-                            color:'#' + (Math.random()*0xFFFFFF<<0).toString(16),
-                            highlight:'#' + (Math.random()*0xFFFFFF<<0).toString(16)
+                            color:'#' + (x + Math.random() * 0xFFFFFF << 0).toString(15),
+                            highlight:'#' + (x + Math.random() *0xFFFFFF << 0).toString(15)
                         }
 
                         the_colors.push(color_chart);
@@ -65,30 +149,19 @@
                     return the_colors;
                 }
 
-
-
-
-
-
-
-                //'#'+(Math.random()*0xFFFFFF<<0).toString(16);
-                $.ajax({
-                    url : "data_scrapper/election_results_2014.php",
-                    dataType : 'jsonp',
-                    method : 'GET',
-                    success : function(response) {
+                $.getJSON("data_scrapper/election_results_2014.php",
+                   function(response) {
                         console.log("response type",typeof response);
                         var $theChartArea = $("#canvas-holder");
-                        console.log("length",Object.keys(response.data).length);
+                        var colors = createColors(80);
                         if (typeof response.data == "object"){
 
 
                                 if (Object.keys(response.data).length > 1){
 
-
-
                                 $.map(response.data,function(value,index){
                                     var thePieData = [],$canvas;
+
                                     if (typeof value == "object" && Object.keys(value).length > 1){
                                         var the_id = index.split(' ').join('_')
                                         //console.log("value", value);
@@ -102,10 +175,15 @@
                                         $canvas = $( '<canvas />', {
                                             width:'300', height:'300', id:the_id ,text:index}
                                         )
-                                        $theChartArea.append('<h1>'+index+'</h1>').append($canvas)
+
+                                        $div = $('<div>')
+                                                .addClass('col-md-4')
+                                                .append($canvas).prepend('<h5>'+index+'</h5>')
+
+                                        $theChartArea.append($div)
 
                                         var color_index = 0;
-                                        var colors = createColors(Object.keys(value).length);
+
                                         $.map(value,function(value,label) {
 
                                             var theData = {
@@ -115,14 +193,14 @@
                                                 label: label
                                             };
                                             color_index++;
+
+                                            if (!/Totals/.test(label))
                                             thePieData.push(theData);
                                             //console.log("value", value);
-                                            //console.log("index", index);
+
                                         });
                                         color_index = 0;
-                                        //if ($canvas.length > 1){
-                                        //console.log("thePieData",$canvas);
-                                        //console.log("theid",$canvas[0].getContext('2d')
+
                                         var $ctx = $canvas[0].getContext('2d');
                                         //var ctx = document.getElementById(the_id).getContext("2d");
                                         window.myPie = new Chart($ctx).Pie(thePieData);
@@ -133,7 +211,7 @@
                         }
 
 
-                    }
+
 
                 });
 
