@@ -182,21 +182,11 @@
 
                                     if (typeof value == "object" && Object.keys(value).length > 1){
                                         var the_id = index.split(' ').join('_')
-                                        //console.log("value", value);
+                                        console.log("value", value);
 
-
-                                        $canvas = $( '<canvas />', {
-                                            width:'300', height:'300', id:the_id ,text:index}
-                                        )
-
-                                        $div = $('<div>')
-                                                .addClass('col-md-4')
-                                                .append($canvas).prepend('<h5>'+index+'</h5>')
-
-                                        $theChartArea.append($div)
 
                                         var color_index = 0;
-
+                                        var total_votes = 0;
                                         $.map(value,function(value,label) {
 
                                             var theData = {
@@ -206,13 +196,25 @@
                                                 label: label
                                             };
                                             color_index++;
+                                            if (/Combined Totals/.test(label))
+                                                total_votes = value;
 
-                                            if (/Totals/.test(label))
+                                            if (/Totals/.test(label) && !/combined/i.test(label))
                                             thePieData.push(theData);
                                             //console.log("value", value);
 
                                         });
                                         color_index = 0;
+
+                                        $canvas = $( '<canvas />', {
+                                                    width:'300', height:'300', id:the_id ,text:index}
+                                        )
+
+                                        $div = $('<div>')
+                                                .addClass('col-md-4')
+                                                .append($canvas).prepend('<h5>'+index+' Total Votes : '+total_votes+'</h5>')
+
+                                        $theChartArea.append($div)
 
                                         var $ctx = $canvas[0].getContext('2d');
                                         //var ctx = document.getElementById(the_id).getContext("2d");
