@@ -137,10 +137,12 @@
 
                 function createColors(intAmount){
                     var the_colors = [];
+
                     for(var x = 0; x < intAmount + 2 ;x++){
+                        //lets make sure we havnt had this color
                         var color_chart = {
-                            color:'#' + (x + Math.random() * 0xFFFFFF << 0).toString(15),
-                            highlight:'#' + (x + Math.random() *0xFFFFFF << 0).toString(15)
+                            color:'#' + randomColor(),
+                            highlight:'#' + randomColor()
                         }
 
                         the_colors.push(color_chart);
@@ -148,6 +150,22 @@
                     }
                     return the_colors;
                 }
+
+            var random_color = [];
+            function randomColor(){
+                var notInColor = true, color;
+                do{
+                    color = (Math.random() + Math.random() * 0xFFFFFF << 0).toString(16)
+                    if (random_color.indexOf(color) < 0){
+                        notInColor = false;
+                        random_color.push(color);
+                        console.log("notInColor",notInColor)
+                    }
+
+
+                }while(notInColor)
+                    return color;
+            }
 
                 $.getJSON("data_scrapper/election_results_2014.php",
                    function(response) {
@@ -166,12 +184,7 @@
                                         var the_id = index.split(' ').join('_')
                                         //console.log("value", value);
 
-                                        /*
-                                        theChartArea.append('<div><h5>'+index+'</h5>' +
-                                        ' <canvas id="'+ the_id +'" width="300" height="300"/> '+
-                                        '</div>');
-                                         <h4>'+index+'</h4>
-                                        */
+
                                         $canvas = $( '<canvas />', {
                                             width:'300', height:'300', id:the_id ,text:index}
                                         )
@@ -194,7 +207,7 @@
                                             };
                                             color_index++;
 
-                                            if (!/Totals/.test(label))
+                                            if (/Totals/.test(label))
                                             thePieData.push(theData);
                                             //console.log("value", value);
 
