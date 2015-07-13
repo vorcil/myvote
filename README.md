@@ -1,3 +1,6 @@
+#Data Sets Used
+we have used the 2014 election results from elections.org.nz
+
 <img align="center" src="http://i.imgur.com/DoYmlMR.png">
 #### Online Demo http://myvote.nzhost.me
 
